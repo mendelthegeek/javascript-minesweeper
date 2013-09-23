@@ -1,0 +1,177 @@
+@charset "utf-8";
+/* CSS Document */
+
+table{
+	border-collapse: collapse;
+	border-spacing: 0px;
+	border: 4px inset #444;
+}
+
+.hidden{
+	display:none;
+}
+
+img{
+	display:block;
+}
+
+.flag{
+	height: 18px;
+	width: 24px;
+	pointer-events:none;
+}
+
+#youRock{
+	width:250px;
+	height:150px;
+	margin:25px auto;
+}
+
+.box{
+    border: 3px outset #959595;
+    width:25px;
+    height: 25px;
+    background-color: #dddddd;
+    cursor: pointer;
+}
+
+.bomb{
+	color: red;
+/*	font-weight:bold;*/
+	font-family: impact;
+	background-color: #E9E9E9;
+	border-right:1px dotted #000000;
+	border-bottom:1px dotted #000000;
+    width:26px;
+    height: 26px;
+}
+
+.zero{
+	background-color: #E9E9E9;
+	border-right:1px dotted #000000;
+	border-bottom:1px dotted #000000;
+	width:26px;
+    height: 26px;
+}
+
+.one {
+	color: blue;
+	background-color: #E9E9E9;
+	border-right:1px dotted #000000;
+	border-bottom:1px dotted #000000;
+	width:26px;
+    height: 26px;
+}
+
+.two {
+	color: green;
+	background-color: #E9E9E9;
+	border-right:1px dotted #000000;
+	border-bottom:1px dotted #000000;
+	width:26px;
+    height: 26px;
+}
+
+.three {
+	color:red;	
+	background-color: #E9E9E9;
+	border-right:1px dotted #000000;
+	border-bottom:1px dotted #000000;
+	width:26px;
+    height: 26px;
+}
+
+.four{
+	color: purple;
+	background-color: #E9E9E9;
+	border-right:1px dotted #000000;
+	border-bottom:1px dotted #000000;
+	width:26px;
+    height: 26px;
+}
+
+.five{
+	color: orange;
+	background-color: #E9E9E9;
+	border-right:1px dotted #000000;
+	border-bottom:1px dotted #000000;
+	width:26px;
+    height: 26px;
+}
+
+.six{
+	color: brown;
+	background-color: #E9E9E9;
+	border-right:1px dotted #000000;
+	border-bottom:1px dotted #000000;
+	width:26px;
+    height: 26px;
+}
+
+.seven{
+	color: grey;
+	background-color: #E9E9E9;
+	border-right:1px dotted #000000;
+	border-bottom:1px dotted #000000;
+	width:26px;
+    height: 26px;
+}
+
+.eight{
+	color: olive;
+	background-color: #E9E9E9;
+	border-right:1px dotted #000000;
+	border-bottom:1px dotted #000000;
+	width:26px;
+    height: 26px;
+}
+
+.center{
+	margin-right:auto;
+	margin-left:auto;
+	text-align: center
+/*	border: 1px solid black;*/
+}
+
+.MtopBig{
+	margin-top:75px;	
+}
+
+.MtopSmall{
+	margin-top: 25px;	
+}
+
+.counter{	
+    border: 2px inset #000000;
+    width: 50px;
+    height: 25px;
+    text-align: right;
+    padding-right: 7px;
+    display: inline-block;
+}
+
+#timer{
+	position: relative;
+	top: 15px;
+	right: 15px;
+}
+
+#flipped {
+	position: relative;
+	top: 15px;
+	left: 15px;
+}
+
+#youSuck {
+	color:red;
+}
+
+#youSuck>a {
+	font-size: 25px;
+}
+
+#container{
+	width: 650px;
+	border: 1px solid black;
+	height: 500px;
+}
