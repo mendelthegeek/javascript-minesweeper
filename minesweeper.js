@@ -54,7 +54,7 @@ for ( i = 0 ; i < rowAmount ; i++ ) {
 		//ten columns
 	for ( var j = 0 ; j < columnAmount ; j++ ) {
 			//produce id value
-		var idValue = ( i * rowAmount ) + j;
+		var idValue = ( i * columnAmount ) + j;
 			//write cell
 		gameBox += "<td class = 'box' id = '" + idValue + "' ></td>";
 	}
