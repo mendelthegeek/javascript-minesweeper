@@ -60,7 +60,7 @@ document.getElementById("grid").innerHTML = gameBox;
 }
 
 function timer() {
-	if ( timePast > 0 ) {
+	if ( timePast < 0 ) {
 		gameOver("time");
 	}
 	if ( gameOn ) {
