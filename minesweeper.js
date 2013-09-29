@@ -314,8 +314,8 @@ function expand( emptyBoxId ) {
 } 
 
 function checkRightOfEmpty( boxToTheRightId ) {
-		//if box is at the edge/ if its right next to the edge / if else
-	if ( boxToTheRightId % columnAmount === ( 0 ) ) {
+		//if box is at the edge or off the edge
+	if ( boxToTheRightId % columnAmount === ( 0 ) || boxToTheRightId > ( cellAmount - 1 ) ) {
 		//do nothing
 	} else {
 		nextToBombCheck( boxToTheRightId );
@@ -323,8 +323,8 @@ function checkRightOfEmpty( boxToTheRightId ) {
 }
 
 function checkLeftOfEmpty( boxToTheLeftId ) {
-		//if box is at the edge/ if its right next to the edge / if not ( its in middle )
-	if ( boxToTheLeftId % columnAmount === ( columnAmount - 1 ) ) {
+		//if box is at the edge or off the edge
+	if ( boxToTheLeftId % columnAmount === ( columnAmount - 1 ) || boxToTheLeftId < 0 ) {
 		//do nothing
 	} else {
 		nextToBombCheck( boxToTheLeftId );
@@ -332,7 +332,7 @@ function checkLeftOfEmpty( boxToTheLeftId ) {
 }
 
 function checkAboveEmpty( boxAboveId ) {
-		//if box is at the edge/ if its right next to the edge / if else
+		//if box is at the edge
 	if ( boxAboveId < 0 ) {
 		//do nothing
 	} else {
@@ -341,8 +341,8 @@ function checkAboveEmpty( boxAboveId ) {
 }
 
 function checkBelowEmpty( boxBelowId ) {
-		//if box is at the edge/ if its right next to the edge / if else
-	if ( boxBelowId > cellAmount ) {
+		//if box is at the edge
+	if ( boxBelowId > cellAmount - 1 ) {
 		//do nothing
 	} else {
 		nextToBombCheck( boxBelowId );
