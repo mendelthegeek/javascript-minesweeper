@@ -10,8 +10,6 @@
 	var timePast = 0;
 	
 	var flagged = [];
-		//amount of squares clicked while game on place-holder
-	var flippedCount = 0;
 		//amount of bombs
 	var bombAmount = 10;
 		//total amount of rows
@@ -102,9 +100,8 @@ function start() {
 	
 		//reset
 	write();
-	speedSweep?timePast = 30:timePast = 0;
-	flippedCount = 0;		
-	$("#flipped").html(flippedCount);
+	speedSweep?timePast = 30:timePast = 0;		
+	$("#flipped").html(alreadyFlipped.length);
 	document.getElementById("youRock").className = "hidden";
 	$("#timer").html( timePast );
 	window.clearTimeout(timoutID);
@@ -174,7 +171,7 @@ $(document).on("mousedown","td", function(event) {
 		
 		}
 		
-	} else if ( !gameOn && flippedCount > 0 && flippedCount < ( cellAmount - bombAmount ) ) {
+	} else if ( !gameOn && alreadyFlipped.length > 0 && alreadyFlipped.length < ( cellAmount - bombAmount ) ) {
 		document.getElementById("youSuck").innerHTML = "YOU LOST ITS GAME OVER PRESS START BUTTON TO RESTART";
 	} else if (!gameOn) {
 			document.getElementById("youSuck").innerHTML = "PRESS START BUTTON TO START";
@@ -207,89 +204,13 @@ function bombCheck(event) {
 }
 
 function checkWin() {
-	if ( flippedCount === ( cellAmount - bombAmount ) ) {
+	if ( alreadyFlipped.length === ( cellAmount - bombAmount ) ) {
 		alert("you won in just " + timePast + " seconds");
 		document.getElementById("youRock").className = "";
 		revealBombs();
 		gameOn = false;
 	}
 }
-
-/* function nextToBombCheck(boxVal) {	//new needs help
-		//reset bomb count
-	bombCount = 0 ;
-		//initialize variable for checking nerby boxes
-	var nextToBox = 0;
-		
-	for ( var i = 9 ; i <= 11 ; i++ ) {
-		nextToBox = boxVal + i;
-			//check if its a wrap
-		if ( ( nextToBox%10 === 0 && boxVal%10 === 9 ) || ( nextToBox%10 === 9 && boxVal%10 === 0 ) ) {
-			continue;
-			//check boxes below
-		} else if ( bomb.indexOf( nextToBox ) >= 0 ) {
-			bombCount++;
-		}
-	}
-	
-	for ( i = -1 ; i <= 1 ; i++ ) {
-		nextToBox = boxVal + i;
-			//check if its a wrap (above and below wont work anyway)
-		if ( ( nextToBox%10 === 0 && boxVal%10 === 9 ) || ( nextToBox%10 === 9 && boxVal%10 === 0 ) ) {
-			continue;
-			//check boxes alongside
-		} else if ( bomb.indexOf( nextToBox ) >= 0 ) {
-			bombCount++;
-		}
-	}
-	
-	for ( i = -11 ; i <= -9 ; i++ ) {
-		nextToBox = boxVal + i;
-		if ( ( nextToBox%10 === 0 && boxVal%10 === 9 ) || ( nextToBox%10 === 9 && boxVal%10 === 0 ) ) {
-			continue;
-			//check boxes above
-		} else if ( bomb.indexOf( nextToBox ) >= 0 ) {
-			bombCount++;
-		}
-	}
-			//asign the box's id as boxId
-		var boxId =  boxVal;
-		
-			//set class(colors) based on bombCount
-		document.getElementById(boxId).className = classList[ bombCount ];
-		
-	if ( bombCount > 0 ) {
-		
-			//write number of neighboring bombs
-		document.getElementById(boxId).innerHTML = bombCount;
-	
-	}else {
-			//open bigger grid
-		expand(boxVal);
-	}	
-}
-
-
-
-
-
-
-
-function expand(emptyBox) {
-		//go right
-	if ( emptyBox%10 === 9 ) {
-		//do nothing
-	} else if ( emptyBox%10 === 8 ) {
-			//one to the right is empty
-		var boxPlusOne = emptyBox + 1;
-		document.getElementById(boxPlusOne).className = "zero";
-	} else {
-		nextToBombCheck(emptyBox - 1);
-	}
-		
-	
-}
-//*/
 
 function gameOver(reasonLost) {
 		//tell you that you lost and why
@@ -320,12 +241,13 @@ function revealBombs() {
 	//check for nearby bombs
 function nextToBombCheck( boxNum ) {	
 		//add to amount of flipped boxes
-	if(alreadyFlipped[ boxNum ] === "yes") {
+	if(alreadyFlipped.indexOf(boxNum) >= 0 ) {
 		return;
 	} else {
-	flippedCount++;
-	document.getElementById("flipped").innerHTML = flippedCount;
-	alreadyFlipped[ boxNum ] = "yes";
+	alreadyFlipped.push(boxNum);
+	document.getElementById("flipped").innerHTML = alreadyFlipped.length;
+	console.log(alreadyFlipped);
+	console.log(boxNum);
 	}
 		//reset bomb count
 	bombCount = 0 ;
