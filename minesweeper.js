@@ -25,9 +25,6 @@
 		//var to enable timer reset
 	var timoutID = "";
 		
-for ( var i = 0 ; i < bombAmount ; i++ ) {
-	bomb[i] = 0;
-}
 	//fill table
 write();
 
@@ -103,7 +100,17 @@ function start() {
 	
 }
 
+function intermediateStart() {
+	rowAmount = 16;
+	columnAmount = 16;
+	bombAmount = 40;
+	regStart();
+}
+
 function writeBombs() {	
+	for ( var j = 0 ; j < bombAmount ; j++ ) {
+		bomb[j] = 0;
+	}
 		//assign bombs as numbers within the cell range
 	for ( var i in bomb ) {
 			//produce random number ( based on amount of cells in the game )
