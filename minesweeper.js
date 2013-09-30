@@ -159,11 +159,13 @@ function reassign(i) {
 $(document).on("mousedown","td", function(event) {
 	//handles box click
 	
+	if (gameOn) {
+	
 	event.preventDefault();
 	
-		var clicked = event.target;
+	event.target.className == "box"?var clicked = event.target:return;
 	
-	if ( gameOn && clicked.className == "box" ) {
+	
 	
 	if ( event.which == "3" ) {
 		flag( parseInt(clicked.id,10) );
@@ -171,17 +173,18 @@ $(document).on("mousedown","td", function(event) {
 	}
 		
 			//run bombcheck functions if you havent lost yet and box isnt flagged
-	if (gameOn && flagged.indexOf( parseInt(clicked.id,10) ) == -1 ) {
-		bombCheck(clicked);
+	if (  flagged.indexOf( parseInt(clicked.id,10) ) == -1 &&
+		bombCheck(clicked); 
+	) {
 		nextToBombCheck( parseInt(clicked.id,10) );
 		checkWin();	
 	}
 		
 		//display these messages if game isnt in progress
-	} else if ( !gameOn && alreadyFlipped.length > 0 && alreadyFlipped.length < ( cellAmount - bombAmount ) ) {
+	} else if ( alreadyFlipped.length > 0 && alreadyFlipped.length < ( cellAmount - bombAmount ) ) {
 		document.getElementById("youSuck").innerHTML = "YOU LOST ITS GAME OVER PRESS START BUTTON TO RESTART";
-	} else if (!gameOn) {
-			document.getElementById("youSuck").innerHTML = "PRESS START BUTTON TO START";
+	} else {
+		document.getElementById("youSuck").innerHTML = "PRESS START BUTTON TO START";
 	}
 });
 
@@ -200,13 +203,15 @@ function flag( boxId ){
 function bombCheck(event) {
 		var boxNum = parseInt(event.id,10);
 			//check if you clicked a bomb
-    if ( bomb.indexOf(boxNum) >= 0 ) {
+	if ( bomb.indexOf(boxNum) >= 0 ) {
 			//show and style as bomb
 		event.innerHTML = "B";
 		event.className = "bomb";
 			//you lose
-		gameOver("bomb");			
+		gameOver("bomb");
+		return false;
 	}
+	return true;
 }
 
 function checkWin() {
