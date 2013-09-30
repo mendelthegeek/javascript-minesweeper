@@ -100,10 +100,24 @@ function start() {
 	
 }
 
+function beginnerStart() {
+	rowAmount = 10;
+	columnAmount = 10;
+	bombAmount = 10;
+	regStart();
+}
+
 function intermediateStart() {
 	rowAmount = 16;
 	columnAmount = 16;
 	bombAmount = 40;
+	regStart();
+}
+
+function expertStart() {
+	rowAmount = 16;
+	columnAmount = 30;
+	bombAmount = 99;
 	regStart();
 }
 
