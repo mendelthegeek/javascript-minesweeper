@@ -158,28 +158,28 @@ function reassign(i) {
 
 $(document).on("mousedown","td", function(event) {
 	//handles box click
-	
+
 	if (gameOn) {
-	
+
 	event.preventDefault();
 	
-	event.target.className == "box"?var clicked = event.target:return;
-	
-	
-	
+	var clicked = event.target;
+
+	if (clicked.className != "box") {return;}
+
 	if ( event.which == "3" ) {
 		flag( parseInt(clicked.id,10) );
 		return;
 	}
-		
+
 			//run bombcheck functions if you havent lost yet and box isnt flagged
-	if (  flagged.indexOf( parseInt(clicked.id,10) ) == -1 &&
-		bombCheck(clicked); 
+	if (  flagged.indexOf( parseInt(clicked.id,10) ) == -1 && 
+		bombCheck(clicked) 
 	) {
 		nextToBombCheck( parseInt(clicked.id,10) );
 		checkWin();	
 	}
-		
+
 		//display these messages if game isnt in progress
 	} else if ( alreadyFlipped.length > 0 && alreadyFlipped.length < ( cellAmount - bombAmount ) ) {
 		document.getElementById("youSuck").innerHTML = "YOU LOST ITS GAME OVER PRESS START BUTTON TO RESTART";
