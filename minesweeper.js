@@ -337,48 +337,84 @@ function nextToBombCheck( boxNum ) {
 	
 function expand( emptyBoxId ) {
 		//expand until you hit numbers
-	checkRightOfEmpty( emptyBoxId + 1 );
-	checkLeftOfEmpty( emptyBoxId - 1 );
-	checkAboveEmpty( emptyBoxId - columnAmount );
-	checkBelowEmpty( emptyBoxId + columnAmount );
-} 
+		
+		//left
+	checkOne( emptyBoxId -1 );
+		//right
+	checkTwo( emptyBoxId +1 );
+		//up
+	checkThree( emptyBoxId - columnAmount );
+		//down
+	checkFour( emptyBoxId + columnAmount );
+		//up and left
+	checkOne( emptyBoxId - columnAmount -1 );
+		//up and right
+	checkTwo( emptyBoxId - columnAmount +1 );
+		//down and left
+	checkFive( emptyBoxId + columnAmount -1 );
+		//down and right
+	checkSix( emptyBoxId + columnAmount +1 );
+}
 
-function checkRightOfEmpty( boxToTheRightId ) {
+function checkOne( boxId ) {
+	if ( boxId < 0 || boxId > cellAmount - 1 ) {return;}
 		//if box is at the edge or off the edge
-	if ( boxToTheRightId % columnAmount === ( 0 ) || boxToTheRightId > ( cellAmount - 1 ) ) {
+	if ( boxId % columnAmount === ( columnAmount - 1 ) || boxId < 0 ) {
 		//do nothing
 	} else {
-		nextToBombCheck( boxToTheRightId );
+		nextToBombCheck( boxId );
 	}
 }
-
-function checkLeftOfEmpty( boxToTheLeftId ) {
+	
+function checkTwo( boxId ) {
+	if ( boxId < 0 || boxId > cellAmount - 1 ) {return;}
 		//if box is at the edge or off the edge
-	if ( boxToTheLeftId % columnAmount === ( columnAmount - 1 ) || boxToTheLeftId < 0 ) {
+	if ( boxId % columnAmount === ( 0 ) || boxId > ( cellAmount - 1 ) ) {
 		//do nothing
 	} else {
-		nextToBombCheck( boxToTheLeftId );
+		nextToBombCheck( boxId );
 	}
 }
 
-function checkAboveEmpty( boxAboveId ) {
+function checkThree( boxId ) {
+	if ( boxId < 0 || boxId > cellAmount - 1 ) {return;}
 		//if box is at the edge
-	if ( boxAboveId < 0 ) {
+	if ( boxId < 0 ) {
 		//do nothing
 	} else {
-		nextToBombCheck( boxAboveId );
+		nextToBombCheck( boxId );
 	}
 }
 
-function checkBelowEmpty( boxBelowId ) {
+function checkFour( boxId ) {
+	if ( boxId < 0 || boxId > cellAmount - 1 ) {return;}
 		//if box is at the edge
-	if ( boxBelowId > cellAmount - 1 ) {
+	if ( boxId > cellAmount - 1 ) {
 		//do nothing
 	} else {
-		nextToBombCheck( boxBelowId );
+		nextToBombCheck( boxId );
 	}
 }
 
+function checkFive( boxId ) {
+	if ( boxId < 0 || boxId > cellAmount - 1 ) {return;}
+		//if box is at the edge
+	if ( boxId > cellAmount - 1 || boxId % columnAmount === ( columnAmount - 1 ) ) {
+		//do nothing
+	} else {
+		nextToBombCheck( boxId );
+	}
+}
+
+function checkSix( boxId ) {
+	if ( boxId < 0 || boxId > cellAmount - 1 ) {return;}
+		//if box is at the edge
+	if ( boxId > cellAmount - 1 || boxId % columnAmount === ( 0 ) ) {
+		//do nothing
+	} else {
+		nextToBombCheck( boxId );
+	}
+}
 
 
 
