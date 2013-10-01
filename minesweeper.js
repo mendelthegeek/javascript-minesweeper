@@ -121,6 +121,15 @@ function expertStart() {
 	regStart();
 }
 
+function customStart() {
+/*$("#cover,#custom").removeClass("hidden");
+	rowAmount = 16;
+	columnAmount = 30;
+	bombAmount = 99;
+	regStart();*/
+	alert("sorry  this ability is not ready yet");
+}
+
 function writeBombs() {	
 	for ( var j = 0 ; j < bombAmount ; j++ ) {
 		bomb[j] = 0;

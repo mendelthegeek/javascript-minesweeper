@@ -1,6 +1,21 @@
 @charset "utf-8";
 /* CSS Document */
 
+#cover {
+    background-color: #FFFFFF;
+    height: 100%;
+    opacity: 0.4;
+    position: fixed;
+    width: 100%;
+    z-index: 9000;
+}
+
+#custom{
+	z-index: 10000;
+	border: 1px solid black;
+	position: absolute;
+}
+
 table{
 	border-collapse: collapse;
 	border-spacing: 0px;

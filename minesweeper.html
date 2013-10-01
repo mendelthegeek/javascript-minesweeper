@@ -10,6 +10,13 @@
 	</head>
 	<body>
 	
+	<div id = "cover" class= "hidden">
+	</div>	
+	<div id = "custom" class= "hidden">
+		bombs:<input type = "text" id = "customBombs"><br />
+		width:<input type = "text" id = "customRows"><br />
+		height:<input type = "text" id = "customColumns"><br />
+	</div>
 	
 			<!--write header-->
 		<div id="header"></div>
@@ -31,6 +38,7 @@
 			<input type="button" class="MtopSmall" value="beginner" name = "startButton" onclick = "beginnerStart();" >
 			<input type="button" class="MtopSmall" value="intermediate" name = "startButton" onclick = "intermediateStart();" >
 			<input type="button" class="MtopSmall" value="expert" name = "startButton" onclick = "expertStart();" >
+			<input type="button" class="MtopSmall" value="custom..." name = "startButton" onclick = "customStart();" >
 			
 			<p id="youSuck"></p>
 			
