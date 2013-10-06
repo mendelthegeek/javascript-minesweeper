@@ -169,13 +169,14 @@ img{
 	margin-top: 25px;	
 }
 
-.counter{	
+.counter {
     border: 2px inset #000000;
-    width: 50px;
-    height: 25px;
-    text-align: right;
-    padding-right: 7px;
+    border-radius: 8px 8px 8px 8px;
     display: inline-block;
+    height: 25px;
+    padding-right: 7px;
+    text-align: right;
+    width: 50px;
 }
 
 #timer{
@@ -198,8 +199,26 @@ img{
 	font-size: 25px;
 }
 
-#container{
-	display: inline-block;
-	padding: 25px 75px;
-	border: 1px solid black;
+#container {
+    border: 1px solid black;
+    border-radius: 30px 30px 30px 30px;
+    display: inline-block;
+    padding: 25px 75px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
