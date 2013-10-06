@@ -127,7 +127,7 @@ $("#cover,#custom").removeClass("hidden");
 	columnAmount = 30;
 	bombAmount = 99;
 	regStart();///
-	alert("sorry  this ability is not ready yet");//*/
+	//alert("sorry  this ability is not ready yet");//*/
 }
 
 function customSubmit() {
