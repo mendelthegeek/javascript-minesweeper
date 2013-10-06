@@ -1,6 +1,10 @@
 @charset "utf-8";
 /* CSS Document */
 
+body{
+	text-align: center;
+}
+
 #cover {
     background-color: #FFFFFF;
     height: 100%;
@@ -10,10 +14,19 @@
     z-index: 9000;
 }
 
-#custom{
-	z-index: 10000;
-	border: 1px solid black;
-	position: absolute;
+#custom {
+    background-color: #FFFFFF;
+    border: 1px solid black;
+    left: 40%;
+    position: absolute;
+    top: 50%;
+    width: 20%;
+    z-index: 10000;
+}
+
+#custom li{
+	list-style: none;
+	margin-bottom:15px;
 }
 
 table{
@@ -186,7 +199,7 @@ img{
 }
 
 #container{
-	width: 650px;
+	display: inline-block;
+	padding: 25px 75px;
 	border: 1px solid black;
-	height: 500px;
 }

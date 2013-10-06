@@ -122,15 +122,24 @@ function expertStart() {
 }
 
 function customStart() {
-/*$("#cover,#custom").removeClass("hidden");
+$("#cover,#custom").removeClass("hidden");
 	rowAmount = 16;
 	columnAmount = 30;
 	bombAmount = 99;
-	regStart();*/
-	alert("sorry  this ability is not ready yet");
+	regStart();///
+	alert("sorry  this ability is not ready yet");//*/
+}
+
+function customSubmit() {
+	rowAmount = $("#customRows").val();
+	columnAmount = $("#customColumns").val();
+	bombAmount = $("#customBombs").val();//*/
+	regStart();
+	$("#cover,#custom").addClass("hidden");
 }
 
 function writeBombs() {	
+	bomb = [];
 	for ( var j = 0 ; j < bombAmount ; j++ ) {
 		bomb[j] = 0;
 	}

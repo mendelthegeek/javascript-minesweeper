@@ -13,9 +13,24 @@
 	<div id = "cover" class= "hidden">
 	</div>	
 	<div id = "custom" class= "hidden">
-		bombs:<input type = "text" id = "customBombs"><br />
-		width:<input type = "text" id = "customRows"><br />
-		height:<input type = "text" id = "customColumns"><br />
+				<ul>
+			<li>
+				<span>bombs:</span>
+				<input type = "text" id = "customBombs"><br />
+			</li>
+			<li>
+				<span>width:</span>
+				<input type = "text" id = "customRows"><br />
+			</li>
+			<li>
+				<span>height:</span>
+				<input type = "text" id = "customColumns"><br />
+			</li>
+			<li>
+				<input type = "button" value="submit" id = "customSubmit" onclick="customSubmit();"><br />
+			</li>
+		</ul>
+
 	</div>
 	
 			<!--write header-->
@@ -32,9 +47,9 @@
 		
 			<table oncontextmenu="return false;" id = "grid" class="center MtopSmall" ></table>
 		
-			<input type="button" class="MtopSmall" value="start!" name = "startButton" onclick = "regStart();" >
+			<input type="button" class="MtopSmall" value="start!" name = "startButton" onclick = "regStart();" />
 			<input type="button" class="MtopSmall" value="start speed-sweep!" name = "startButton" onclick = "speedStart();" >
-			<br />
+			<br>
 			<input type="button" class="MtopSmall" value="beginner" name = "startButton" onclick = "beginnerStart();" >
 			<input type="button" class="MtopSmall" value="intermediate" name = "startButton" onclick = "intermediateStart();" >
 			<input type="button" class="MtopSmall" value="expert" name = "startButton" onclick = "expertStart();" >
@@ -46,7 +61,7 @@
 		
 		</div>
 		
-		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src = "http://code.jquery.com/jquery-1.9.1.js"></script>
 		<script src = "minesweeper.js" ></script>
 		
 	</body>
