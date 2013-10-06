@@ -131,9 +131,9 @@ $("#cover,#custom").removeClass("hidden");
 }
 
 function customSubmit() {
-	rowAmount = $("#customRows").val();
-	columnAmount = $("#customColumns").val();
-	bombAmount = $("#customBombs").val();//*/
+	rowAmount = parseInt($("#customRows").val(),10);
+	columnAmount = parseInt($("#customColumns").val(),10);
+	bombAmount = parseInt($("#customBombs").val(),10);//*/
 	regStart();
 	$("#cover,#custom").addClass("hidden");
 }
@@ -282,8 +282,8 @@ function nextToBombCheck( boxNum ) {
 	} else {
 	alreadyFlipped.push(boxNum);
 	document.getElementById("flipped").innerHTML = alreadyFlipped.length;
-	console.log(alreadyFlipped);
-	console.log(boxNum);
+	//console.log(alreadyFlipped);
+	//console.log(boxNum);
 	}
 			//check for nearby bombs
 	
