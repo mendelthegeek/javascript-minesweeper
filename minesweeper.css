@@ -30,9 +30,28 @@ body{
 }
 
 table{
-	border-collapse: collapse;
-	border-spacing: 0px;
-	border: 4px inset #444;
+	/*border-collapse: collapse;
+	border: 4px inset #444;*/
+	padding:10px;
+	border-spacing: 5px;
+	background-color:#75a9FF;
+	border-radius:10px;
+}
+
+table td{
+	width: 18px;
+	height: 18px;
+	border-radius: 3px;
+	font-size
+}
+
+table td:not(.box){
+	background-color: #b5b5b9;
+	font-size:14px;
+}
+
+table td:not(.bomb){
+	font-weight:bold;
 }
 
 .hidden{
@@ -45,7 +64,7 @@ img{
 
 .flag{
 	height: 18px;
-	width: 24px;
+	width: 18px;
 	pointer-events:none;
 }
 
@@ -56,10 +75,8 @@ img{
 }
 
 .box{
-    border: 3px outset #959595;
-    width:25px;
-    height: 25px;
-    background-color: #dddddd;
+    /*border: 3px outset #959595;*/
+    background-color: #80808a;
     cursor: pointer;
 }
 
@@ -67,91 +84,38 @@ img{
 	color: red;
 /*	font-weight:bold;*/
 	font-family: impact;
-	background-color: #E9E9E9;
-	border-right:1px dotted #000000;
-	border-bottom:1px dotted #000000;
-    width:26px;
-    height: 26px;
-}
-
-.zero{
-	background-color: #E9E9E9;
-	border-right:1px dotted #000000;
-	border-bottom:1px dotted #000000;
-	width:26px;
-    height: 26px;
 }
 
 .one {
 	color: blue;
-	background-color: #E9E9E9;
-	border-right:1px dotted #000000;
-	border-bottom:1px dotted #000000;
-	width:26px;
-    height: 26px;
 }
 
 .two {
 	color: green;
-	background-color: #E9E9E9;
-	border-right:1px dotted #000000;
-	border-bottom:1px dotted #000000;
-	width:26px;
-    height: 26px;
 }
 
 .three {
 	color:red;	
-	background-color: #E9E9E9;
-	border-right:1px dotted #000000;
-	border-bottom:1px dotted #000000;
-	width:26px;
-    height: 26px;
 }
 
 .four{
 	color: purple;
-	background-color: #E9E9E9;
-	border-right:1px dotted #000000;
-	border-bottom:1px dotted #000000;
-	width:26px;
-    height: 26px;
 }
 
 .five{
 	color: orange;
-	background-color: #E9E9E9;
-	border-right:1px dotted #000000;
-	border-bottom:1px dotted #000000;
-	width:26px;
-    height: 26px;
 }
 
 .six{
 	color: brown;
-	background-color: #E9E9E9;
-	border-right:1px dotted #000000;
-	border-bottom:1px dotted #000000;
-	width:26px;
-    height: 26px;
 }
 
 .seven{
 	color: grey;
-	background-color: #E9E9E9;
-	border-right:1px dotted #000000;
-	border-bottom:1px dotted #000000;
-	width:26px;
-    height: 26px;
 }
 
 .eight{
 	color: olive;
-	background-color: #E9E9E9;
-	border-right:1px dotted #000000;
-	border-bottom:1px dotted #000000;
-	width:26px;
-    height: 26px;
 }
 
 .center{
