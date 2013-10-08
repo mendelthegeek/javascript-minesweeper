@@ -30,12 +30,18 @@ body{
 }
 
 table{
+	/*padding:8px;*/
+	background-color:#75A9FF;
+	border: 10px ridge #FF6644;
+	border-radius: 5px 5px 5px 5px;
+	border-spacing: 6px;
 	/*border-collapse: collapse;
 	border: 4px inset #444;*/
-	padding:10px;
-	border-spacing: 5px;
-	background-color:#75a9FF;
-	border-radius:10px;
+	/*border-spacing: 5px;
+	border-width: 0 12px 13px 0;
+	border-radius: 10px 10px 10px 10px;
+	border-color: transparent #AABBFF #6688FF transparent;
+	background-clip: padding-box;*/
 }
 
 table td{
@@ -164,7 +170,7 @@ img{
 }
 
 #container {
-    border: 1px solid black;
+    border: 7px solid black;
     border-radius: 30px 30px 30px 30px;
     display: inline-block;
     padding: 25px 75px;
