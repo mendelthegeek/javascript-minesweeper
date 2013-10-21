@@ -262,16 +262,9 @@ function gameOver(reasonLost) {
 }
 
 function revealBombs() {
-	var bombsFoundInLoop = 0;
-		//reveals bombs
-	for ( var currentLoop = 0 ; currentLoop < cellAmount ; currentLoop++ ) {
-		if ( bombsFoundInLoop === bomb.length )
-			return;
-		if ( bomb.indexOf(currentLoop) >=0 ) {
-				document.getElementById(currentLoop).innerHTML = "B";
-				document.getElementById(currentLoop).className = "bomb";
-				bombsFoundInLoop++;
-		}
+	for(var i = 0; i < bomb.length; i++ ) {
+				document.getElementById( bomb[i] ).innerHTML = "B";
+				document.getElementById( bomb[i] ).className = "bomb";
 	}
 }
 	
