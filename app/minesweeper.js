@@ -240,15 +240,17 @@ function checkWin() {
 
 function gameOver(reasonLost) {
 		//tell you that you lost and why
-	reasonLost == "bomb"?
-		alert("you clicked a bomb"):
+	if (reasonLost == "bomb")
+		alert("you clicked a bomb");
+	else
 		alert("out of time");
+	
 	revealBombs();
 		//dont let clicks trigger events
 	gameOn = false;
 		//give sarcastic mean comment
-	document.getElementById("youSuck").innerHTML = "<a href = 'http://www.wikihow.com/Play-Minesweeper'"
-	+ "target = '_blank'>This is for you</a>";
+	document.getElementById("youSuck").innerHTML = "<a href = 'http://www.wikihow.com/Play-Minesweeper'" +
+		"target = '_blank'>This is for you</a>";
 		//stop timer
 	window.clearTimeout(timoutID);
 }
