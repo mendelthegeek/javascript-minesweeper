@@ -283,44 +283,16 @@ function nextToBombCheck( boxNum ) {
 		//reset bomb count
 	bombCount = 0 ;
 		//initialize variable for checking nearby boxes
-	var nextToBox = 0;
-		
-	var checkSide = 0;
 	
-	for ( var i = ( columnAmount - 1 ); i <= ( columnAmount + 1 ) ; i++ ) {
-		nextToBox = boxNum + i;
-			//check if its a wrap
-		if ( ( nextToBox%columnAmount === 0 && boxNum%columnAmount === ( columnAmount - 1 ) ) || 
-			( nextToBox%columnAmount === ( columnAmount - 1 ) && boxNum%columnAmount === 0 ) ) {
-			continue;
-			//check boxes below
-		} else if ( bomb.indexOf( nextToBox ) >= 0 ) {
-			bombCount++;
-		}
-	}
+		//check boxes above
+	bombCount += check( boxNum + columnAmount - 1 );
 	
-	for ( i = -1 ; i <= 1 ; i++ ) {
-		nextToBox = boxNum + i;
-			//check if its a wrap (above and below wont work anyway)
-		if ( ( nextToBox%columnAmount === 0 && boxNum%columnAmount === ( columnAmount - 1 ) ) || 
-			( nextToBox%columnAmount === ( columnAmount - 1 ) && boxNum%columnAmount === 0 ) ) {
-			continue;
-			//check boxes alongside
-		} else if ( bomb.indexOf( nextToBox ) >= 0 ) {
-			bombCount++;
-		}
-	}
+		//check boxes alongside
+	bombCount += check( boxNum - 1 );
 	
-	for ( i = ( 0 - columnAmount - 1 ) ; i <= ( 0 - columnAmount + 1 ) ; i++ ) {
-		nextToBox = boxNum + i;
-		if ( ( nextToBox%columnAmount === 0 && boxNum%columnAmount === ( columnAmount - 1 ) ) || 
-			( nextToBox%columnAmount === ( columnAmount - 1 ) && boxNum%columnAmount === 0 ) ) {
-			continue;
-			//check boxes above
-		} else if ( bomb.indexOf( nextToBox ) >= 0 ) {
-			bombCount++;
-		}
-	}
+		//check boxes below
+	bombCount += check( boxNum - columnAmount - 1 );
+	
 			//set class(colors) based on bombCount
 		var ele = document.getElementById(boxNum);
 		
@@ -335,6 +307,21 @@ function nextToBombCheck( boxNum ) {
 	else {
 		expand(boxNum);
 	}	
+}
+
+function check(startNum) {
+    var bombsFound = 0;
+    for (var i = startNum; i < startNum + 2; i++) {
+        //check for wrap
+        if ((i % columnAmount === 0 && startNum % columnAmount === (columnAmount - 1)) || 
+		(i % columnAmount === (columnAmount - 1) && startNum % columnAmount === 0)) {
+            continue;
+            //check for bombs
+        } else if (bomb.indexOf(i) >= 0) {
+            bombsFound++;
+        }
+    }
+    return bombsFound;
 }
 	
 function expand( emptyBoxId ) {
