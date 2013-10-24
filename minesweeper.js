@@ -145,15 +145,7 @@ function writeBombs() {
 	}
 		//assign bombs as numbers within the cell range
 	for ( var i in bomb ) {
-			//produce random number ( based on amount of cells in the game )
-		var number = Math.floor( Math.random() * ( cellAmount - 1 ) );
-				//check if its already a bomb value if yes reassign
-			if( bomb.indexOf(number) >= 0 ){
 				reassign(i);
-				//if not cool lets move on
-			} else {
-				bomb[i] = number;
-			}	
 		}
 		 
 		//haha i can cheat (for debugging)
