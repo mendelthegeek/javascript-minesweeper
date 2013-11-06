@@ -86,13 +86,16 @@ function start() {
 	writeBombs();
 	
 		//start the timer
-	speedSweep?timePast = 30:timePast = 0;
+	timePast = speedSweep?30:0;
 	window.clearTimeout(timoutID);
 	timoutID = setTimeout(timer, 1000);
 	
 		//clear flipped counter
 	alreadyFlipped = [];
 	$("#flipped").html(alreadyFlipped.length);
+	
+		//reset the flagged array
+	flagged = [];
 	
 		//clear text under start button
 	document.getElementById("youSuck").innerHTML = "";
@@ -241,6 +244,7 @@ function gameOver(reasonLost) {
 		alert("you clicked a bomb");
 	else
 		alert("out of time");
+		
 	
 	revealBombs();
 		//dont let clicks trigger events
@@ -264,10 +268,8 @@ function nextToBombCheck( boxNum ) {
 	if(alreadyFlipped.indexOf(boxNum) >= 0 ) {
 		return;
 	} else {
-	alreadyFlipped.push(boxNum);
-	document.getElementById("flipped").innerHTML = alreadyFlipped.length;
-	//console.log(alreadyFlipped);
-	//console.log(boxNum);
+		alreadyFlipped.push(boxNum);
+		document.getElementById("flipped").innerHTML = alreadyFlipped.length;
 	}
 			//check for nearby bombs
 	
@@ -292,7 +294,7 @@ function nextToBombCheck( boxNum ) {
 		ele.className = classList[bombCount] + ' flipped';
 			
 	if ( bombCount !== 0 ) {
-			//write number of neighboring bombs
+			//write number of neighbouring bombs
 		ele.innerHTML = bombCount;
 	}
 	else {
@@ -305,7 +307,7 @@ function check(startNum) {
     for (var i = startNum; i < startNum + 2; i++) {
         //check for wrap
         if ((i % columnAmount === 0 && startNum % columnAmount === (columnAmount - 1)) || 
-		(i % columnAmount === (columnAmount - 1) && startNum % columnAmount === 0)) {
+	(i % columnAmount === (columnAmount - 1) && startNum % columnAmount === 0)) {
             continue;
             //check for bombs
         } else if (bomb.indexOf(i) >= 0) {
@@ -315,25 +317,26 @@ function check(startNum) {
     return bombsFound;
 }
 	
+	
 function expand( emptyBoxId ) {
 		//expand until you hit numbers
 		
 		//left
-	expandCheck( emptyBoxId -1,(emptyBoxId -1 % columnAmount === ( columnAmount - 1 ) ) );
+	expandCheck( emptyBoxId -1, ( emptyBoxId -1 % columnAmount === ( columnAmount - 1 ) ) );
 		//right
-	expandCheck( emptyBoxId +1, ( emptyBoxId +1 % columnAmount === ( 0 ) ) );
+	expandCheck( emptyBoxId +1, ( emptyBoxId +1 % columnAmount === 0 ) );
 		//up
 	expandCheck( emptyBoxId - columnAmount, false );
 		//down
 	expandCheck( emptyBoxId + columnAmount, false );
 		//up and left
-	expandCheck( emptyBoxId - columnAmount -1, ( emptyBoxId - columnAmount -1 % columnAmount === ( columnAmount - 1 ) ) );
+	expandCheck( emptyBoxId - columnAmount -1, ( emptyBoxId -1 % columnAmount === ( columnAmount - 1 ) ) );
 		//up and right
-	expandCheck( emptyBoxId - columnAmount +1, (emptyBoxId - columnAmount +1 % columnAmount === ( 0 ) ) );
+	expandCheck( emptyBoxId - columnAmount +1, ( emptyBoxId +1 % columnAmount === 0 ) );
 		//down and left
-	expandCheck( emptyBoxId + columnAmount -1, ( emptyBoxId + columnAmount -1 % columnAmount === ( columnAmount - 1 ) ) );
+	expandCheck( emptyBoxId + columnAmount -1, ( emptyBoxId -1 % columnAmount === ( columnAmount - 1 ) ) );
 		//down and right
-	expandCheck( emptyBoxId + columnAmount +1, ( emptyBoxId + columnAmount +1 % columnAmount === ( 0 ) ) );
+	expandCheck( emptyBoxId + columnAmount +1, ( emptyBoxId +1 % columnAmount === 0 ) );
 }
 
 function expandCheck( boxId,uniqueCheck ){
