@@ -138,13 +138,10 @@ function customSubmit() {
 	$("#cover,#custom").addClass("hidden");
 }
 
-function writeBombs() {	
-	bomb = [];
-	for ( var j = 0 ; j < bombAmount ; j++ ) {
-		bomb[j] = 0;
-	}
+function writeBombs() {
+	
 		//assign bombs as numbers within the cell range
-	for ( var i in bomb ) {
+	for ( var i = 0; i < bombAmount; i++ ) {
 				reassign(i);
 		}
 		 
@@ -332,7 +329,7 @@ function expand( emptyBoxId ) {
 		//up and left
 	expandCheck( emptyBoxId - columnAmount -1, ( emptyBoxId - columnAmount -1 % columnAmount === ( columnAmount - 1 ) ) );
 		//up and right
-	expandCheck emptyBoxId - columnAmount +1, (emptyBoxId - columnAmount +1 % columnAmount === ( 0 ) ) );
+	expandCheck( emptyBoxId - columnAmount +1, (emptyBoxId - columnAmount +1 % columnAmount === ( 0 ) ) );
 		//down and left
 	expandCheck( emptyBoxId + columnAmount -1, ( emptyBoxId + columnAmount -1 % columnAmount === ( columnAmount - 1 ) ) );
 		//down and right
