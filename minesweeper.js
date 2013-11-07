@@ -340,7 +340,7 @@ function expand( emptyBoxId ) {
 }
 
 function expandCheck( boxId,uniqueCheck ){
-	if ( !( boxId < 0 || boxId > cellAmount - 1 ) && !uniqueCheck ) {
+	if ( boxId => 0 && boxId < cellAmount && !uniqueCheck ) { //NOTE: cellAmount starts at 1 (so `<` not `<=`)
 		nextToBombCheck( boxId );
 	}
 }
