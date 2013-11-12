@@ -304,7 +304,7 @@ function nextToBombCheck( boxNum ) {
 
 function check(startNum) {
     var bombsFound = 0;
-    for (var i = startNum; i < startNum + 3; i++) {
+    for (var i = startNum; i <= startNum + 2; i++) {
         //check for wrap
         if ((i % columnAmount === 0 && startNum % columnAmount === (columnAmount - 1)) || 
 	(i % columnAmount === (columnAmount - 1) && startNum % columnAmount === 0)) {
