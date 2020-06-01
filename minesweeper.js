@@ -1,6 +1,4 @@
 /* todo list
-make flip function
-make checkwin function
 make diferent sized boards function
 make timer function
 make check nearby function
@@ -11,29 +9,29 @@ var rowAmount = 10; //total amount of rows
 var columnAmount = 10; //isn't it obvious?
 var cellAmount; //amount of cells (assigned after <table> is built)
 var bombAmount = 10; //amount of bombs
+var boxNum; //variable for box number
 var bomb = []; //array of bomb locations
-var gameOn = false; //sorry gotta press start
-var alreadyFlipped = []; //initialize array needed for not repeating expand(?) :implement next
+var gameOn = false; //sorry gotta press start(not anymore)
+var alreadyFlipped = []; //initialize array needed for not repeating expand
 var flagged = []; //array to keep track of flagged squares
 
 function write() {
 	
-document.getElementById("grid").innerHTML = ""; 	//empty table ( dont make multiple games)
-var gameBox = ""; //gamebox initlazation
+	document.getElementById("grid").innerHTML = ""; //empty table ( dont make multiple games)
+	var gameBox = ""; //gamebox initilazation
 
-//write rows
-for ( i = 0 ; i < rowAmount ; i++ ) {
-	gameBox += "<tr>";
-		//write cells
-		for ( var j = 0 ; j < columnAmount ; j++ ) {
-			var idValue = ( i * columnAmount ) + j; //produce id value
-			gameBox += "<td class = 'box' id = '" + idValue + "' ></td>"; //write cell
-		}
-	gameBox += "</tr>";
-}
-
-cellAmount = rowAmount * columnAmount; //assign cellAmount
-document.getElementById("grid").innerHTML = gameBox; //now to actually write it
+	//write rows
+	for ( i = 0 ; i < rowAmount ; i++ ) {
+		gameBox += "<tr>";
+			//write cells
+			for ( var j = 0 ; j < columnAmount ; j++ ) {
+				var idValue = ( i * columnAmount ) + j; //produce id value
+				gameBox += "<td class = 'box' id = '" + idValue + "' ></td>"; //write cell
+			}
+		gameBox += "</tr>";
+	}
+	cellAmount = rowAmount * columnAmount; //assign cellAmount
+	document.getElementById("grid").innerHTML = gameBox; //now to actually write it
 }
 
 function writeBombs() {
@@ -60,10 +58,6 @@ function reassign(i) {
 	} else {
 		bomb[i] = number;
 	}		
-}
-
-function regStart() {
-	start();
 }
 
 function start() {
@@ -101,28 +95,29 @@ $(document).on("mousedown","td", function(event) {
 		event.preventDefault();
 		var clicked = event.target;
 
-		if (clicked.className != "box") {return;}
+		if (clicked.className != "box") {return;} //checks if box was clicked
 		
+		//checks if right clicked
 		if ( event.which == "3" ) {
 		flag( parseInt(clicked.id,10) );
 		return;
 		}
 
 		//run bombcheck functions if you havent lost yet and box isnt flagged
-		if (  flagged.indexOf( parseInt(clicked.id,10) ) == -1 && 
-			bombCheck(clicked) 
-		) {
+		if (  flagged.indexOf( parseInt(clicked.id,10) ) == -1 && bombCheck(clicked) ) {
 		
-		//add to amount of flipped boxes
-		if(alreadyFlipped.indexOf(boxNum) >= 0 ) {
-			return;
-		} else {
-			alreadyFlipped.push(boxNum);
-			document.getElementById("flipped").innerHTML = alreadyFlipped.length;
-		}
-		//check nearby function
-		//(flip touching function)
-		//check win
+			//add to flipped boxes
+			if(alreadyFlipped.indexOf(boxNum) >= 0 ) { //checks if flipped
+				return;
+			}
+			else {
+				alreadyFlipped.push(boxNum); //adds to flippedbox array
+				document.getElementById("flipped").innerHTML = alreadyFlipped.length; //counts flippedboxes
+				document.getElementById(boxNum).className = '' + ' flipped';//changes class
+			}
+			//check nearby function
+			//(flip touching function)
+			checkWin();	//check win
 		}
 	
 	}
@@ -134,7 +129,7 @@ $(document).on("mousedown","td", function(event) {
 
 function bombCheck(event) {
 	
-	var boxNum = parseInt(event.id,10);
+	boxNum = parseInt(event.id,10);//sets boxnum
 	
 	//check if you clicked a bomb
 	if ( bomb.indexOf(boxNum) >= 0 ) {
@@ -148,6 +143,7 @@ function bombCheck(event) {
 	return true;
 };	
 
+//flag function
 function flag( boxId ){
 	var flaggedPos = flagged.indexOf( boxId );
 	if ( flaggedPos == -1 ) {
@@ -167,19 +163,30 @@ function gameOver(reasonLost) {
 		alert("you clicked a bomb");
 	else
 		alert("out of time");
-		
 	
 	revealBombs();
 	
-	//dont let clicks trigger events
-	gameOn = false;
+	gameOn = false; //dont let clicks trigger events
 	
-	//give sarcastic mean comment
 	document.getElementById("youSuck").innerHTML = "<a href = 'http://www.wikihow.com/Play-Minesweeper'" +
-	"target = '_blank'>This is for you</a>";
+	"target = '_blank'>This is for you</a>"; //give sarcastic mean comment
 	
 	//stop timer
 	//window.clearTimeout(timoutID); :not yet
+}
+
+function checkWin() {
+	if ( alreadyFlipped.length === ( cellAmount - bombAmount ) ) {
+		//tell you that you are cool
+		alert("you won in just  seconds");
+		document.getElementById("youRock").className = "";
+		//bombs, show yourselfs!
+		revealBombs();
+		//game is over
+		gameOn = false;
+/*		//stop timer
+		window.clearTimeout(timoutID); */
+	}
 }
 
 function revealBombs() {
