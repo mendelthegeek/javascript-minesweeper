@@ -1,3 +1,12 @@
+/* todo list
+make flip function
+make checkwin function
+make diferent sized boards function
+make timer function
+make check nearby function
+make flip nearby function
+*/
+
 var rowAmount = 10; //total amount of rows
 var columnAmount = 10; //isn't it obvious?
 var cellAmount; //amount of cells (assigned after <table> is built)
@@ -103,9 +112,16 @@ $(document).on("mousedown","td", function(event) {
 		if (  flagged.indexOf( parseInt(clicked.id,10) ) == -1 && 
 			bombCheck(clicked) 
 		) {
-		//flip function
+		
+		//add to amount of flipped boxes
+		if(alreadyFlipped.indexOf(boxNum) >= 0 ) {
+			return;
+		} else {
+			alreadyFlipped.push(boxNum);
+			document.getElementById("flipped").innerHTML = alreadyFlipped.length;
+		}
 		//check nearby function
-		//(flip touchin function)
+		//(flip touching function)
 		//check win
 		}
 	
