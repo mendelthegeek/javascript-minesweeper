@@ -3,66 +3,65 @@
 	<head>
 	
 		<title>mendel's minesweeper</title>
-	
 		<link rel = "stylesheet" type = "text/css" href = "minesweeper.css" >
-		<link rel = "stylesheet" type = "text/css" href = "header.css" >
 		
 	</head>
 	<body>
 	
-	<div id = "cover" class= "hidden">
-	</div>	
-	<div id = "custom" class= "hidden">
-				<ul>
-			<li>
-				<span>bombs:</span>
-				<input type = "text" id = "customBombs"><br />
-			</li>
-			<li>
-				<span>width:</span>
-				<input type = "text" id = "customRows"><br />
-			</li>
-			<li>
-				<span>height:</span>
-				<input type = "text" id = "customColumns"><br />
-			</li>
-			<li>
-				<input type = "button" value="submit" id = "customSubmit" onclick="customSubmit();"><br />
-			</li>
-		</ul>
+		<div id = "cover" class= "hidden">
+		</div>	
+		<div id = "custom" class= "hidden">
+			<ul>
+				<li>
+					<span>bombs:</span>
+					<input type = "text" id = "customBombs"><br />
+				</li>
+				<li>
+					<span>width:</span>
+					<input type = "text" id = "customRows"><br />
+				</li>
+				<li>
+					<span>height:</span>
+					<input type = "text" id = "customColumns"><br />
+				</li>
+				<li>
+					<input type = "button" value="submit" id = "customSubmit" onclick="customSubmit();"><br />
+				</li>
+			</ul>
 
-	</div>
+		</div>
 	
-			<!--write header-->
+		<!--write header-->
 		<div id="header"></div>
 		<script src = "header.js" ></script>
 	
 		<img src = 'http://www.thepetrock.20m.com/images/21245.gif' id = "youRock" class="hidden" />
 	
 		<div class="center MtopBig" id="container">
-		
+
 			<div class="counter" id="timer">0</div>
-			
+
 			<div class="counter" id="flipped">0</div>
-		
+
 			<table oncontextmenu="return false;" id = "grid" class="center MtopSmall" ></table>
-		
-			<input type="button" class="MtopSmall" value="start!" name = "startButton" onclick = "regStart();" />
-			<input type="button" class="MtopSmall" value="start speed-sweep!" name = "startButton" onclick = "speedStart();" >
+
+			<input type="button" class="MtopSmall" value="start!" name = "startButton" onclick = "start();" />
+			<input type="button" class="MtopSmall" value="start speed-sweep!" name = "startButton" onclick = "speedStart();" />
 			<br>
-			<input type="button" class="MtopSmall" value="beginner" name = "startButton" onclick = "beginnerStart();" >
-			<input type="button" class="MtopSmall" value="intermediate" name = "startButton" onclick = "intermediateStart();" >
-			<input type="button" class="MtopSmall" value="expert" name = "startButton" onclick = "expertStart();" >
-			<input type="button" class="MtopSmall" value="custom..." name = "startButton" onclick = "customStart();" >
-			
+			<input type="button" class="MtopSmall" value="beginner" name = "startButton" onclick = "beginnerStart();" />
+			<input type="button" class="MtopSmall" value="intermediate" name = "startButton" onclick = "intermediateStart();" />
+			<input type="button" class="MtopSmall" value="expert" name = "startButton" onclick = "expertStart();" />
+			<input type="button" class="MtopSmall" value="custom..." name = "startButton" onclick = "customStart();" />
+
 			<p id="youSuck"></p>
-			
+
 			<div id = "userOptionsDiv" ></div>
 		
 		</div>
 		
 		<script src = "http://code.jquery.com/jquery-1.9.1.js"></script>
 		<script src = "minesweeper.js" ></script>
+		<script>start();</script>
 		
 	</body>
 </html>
